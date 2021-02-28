@@ -1,5 +1,6 @@
 package com.app.spring_hibernate_entity_relationships.one_to_one;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,12 +12,16 @@ import javax.persistence.Table;
 @Table(name = "pet")
 public class Pet {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Column(name = "owner_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id")
 	private long id;
 
 	private String name;
 
 	@OneToOne(mappedBy = "pet")
+//	@MapsId
+//	@JoinColumn(name = "owner_id")
 	private Owner owner;
 
 	public Pet() {
