@@ -4,16 +4,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "pet")
 public class Pet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private String name;
+
+	@OneToOne(mappedBy = "pet")
+	private Owner owner;
+
+	public Pet() {
+	}
+
+	public Pet(String name) {
+		super();
+		this.name = name;
+	}
 
 	public long getId() {
 		return id;
@@ -31,4 +43,11 @@ public class Pet {
 		this.name = name;
 	}
 
+	public Owner getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Owner owner) {
+		this.owner = owner;
+	}
 }
