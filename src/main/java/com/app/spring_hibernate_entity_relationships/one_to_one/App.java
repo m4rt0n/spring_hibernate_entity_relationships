@@ -1,0 +1,15 @@
+package com.app.spring_hibernate_entity_relationships.one_to_one;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+//@EnableAutoConfiguration
+//@ComponentScan
+public class App {
+
+	public static void main(String[] args) {
+		SpringApplication.run(App.class, args);
+	}
+
+}
