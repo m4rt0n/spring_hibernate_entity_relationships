@@ -54,7 +54,6 @@ public class Pet {
 
 	public void setOwner(Owner owner) {
 		this.owner = owner;
-		this.id = owner.getId();
 	}
 
 }
