@@ -1,12 +1,13 @@
 package com.app.spring_hibernate_entity_relationships.one_to_one;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -14,14 +15,14 @@ import javax.persistence.Table;
 public class Owner {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private long id;
 
 	private String name;
 
-	@OneToOne(cascade = CascadeType.ALL)
-//	@PrimaryKeyJoinColumn
-	@JoinColumn(name = "pet_id", referencedColumnName = "id")
+	@OneToOne(mappedBy = "owner", cascade = CascadeType.PERSIST)
+	@PrimaryKeyJoinColumn
 	private Pet pet;
 
 	public Owner() {

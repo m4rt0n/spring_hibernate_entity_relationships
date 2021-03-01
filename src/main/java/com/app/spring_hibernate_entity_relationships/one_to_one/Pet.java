@@ -2,26 +2,26 @@ package com.app.spring_hibernate_entity_relationships.one_to_one;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "pet")
 public class Pet {
+
 	@Id
-//	@Column(name = "owner_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+
+	@Column(name = "owner_id")
 	private long id;
 
 	private String name;
 
-	@OneToOne(mappedBy = "pet")
-//	@MapsId
-//	@JoinColumn(name = "owner_id")
+	@OneToOne
+	@MapsId
+	@JoinColumn(name = "owner_id")
 	private Owner owner;
 
 	public Pet() {
@@ -54,5 +54,7 @@ public class Pet {
 
 	public void setOwner(Owner owner) {
 		this.owner = owner;
+		this.id = owner.getId();
 	}
+
 }

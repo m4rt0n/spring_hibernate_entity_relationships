@@ -22,8 +22,9 @@ public class Controller {
 	public void doStuff() {
 		Owner o = new Owner("o1");
 		Pet p = new Pet("p");
-		o.setPet(p);
+		p.setOwner(o);
 		service.saveOrUpdateOwner(o);
 		service.saveOrUpdatePet(p);
+
 	}
 }
