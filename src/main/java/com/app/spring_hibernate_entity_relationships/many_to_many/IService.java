@@ -1,4 +1,4 @@
-package com.app.spring_hibernate_entity_relationships.one_to_one;
+package com.app.spring_hibernate_entity_relationships.many_to_many;
 
 public interface IService {
 

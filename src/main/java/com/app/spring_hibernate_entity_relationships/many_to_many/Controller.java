@@ -1,4 +1,7 @@
-package com.app.spring_hibernate_entity_relationships.one_to_one;
+package com.app.spring_hibernate_entity_relationships.many_to_many;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,11 +23,20 @@ public class Controller {
 
 	@PostMapping("/add")
 	public void doStuff() {
-		Owner o = new Owner("o1");
-		Pet p = new Pet("p");
-		p.setOwner(o);
-		service.saveOrUpdateOwner(o);
-		service.saveOrUpdatePet(p);
+		Owner o1 = new Owner("o1");
+		Owner o2 = new Owner("o2");
+		Pet p1 = new Pet("p1");
+		Pet p2 = new Pet("p2");
 
+		List<Pet> pets = new ArrayList<>();
+		pets.add(p1);
+		pets.add(p2);
+
+		o1.setPets(pets);
+
+		service.saveOrUpdateOwner(o1);
+		pets.forEach(p -> service.saveOrUpdatePet(p));
+		// service.saveOrUpdatePet(p1);
+		// service.saveOrUpdatePet(p2);
 	}
 }
