@@ -1,32 +1,31 @@
-package com.app.spring_hibernate_entity_relationships.one_to_many;
+package com.app.spring_hibernate_entity_relationships.many_to_many;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "owner")
-public class Owner {
+@Table(name = "pet")
+public class Pet {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private String name;
+	@ManyToMany(mappedBy = "pets")
+	private List<Owner> owners = new ArrayList<>();
 
-	@OneToMany(mappedBy = "owner", cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	private List<Pet> pets;
-
-	public Owner() {
+	public Pet() {
 	}
 
-	public Owner(String name) {
+	public Pet(String name) {
 		super();
 		this.name = name;
 	}
@@ -47,12 +46,16 @@ public class Owner {
 		this.name = name;
 	}
 
-	public List<Pet> getPets() {
-		return pets;
+	public List<Owner> getOwners() {
+		return owners;
 	}
 
-	public void setPets(List<Pet> pets) {
-		this.pets = pets;
+	public void setOwners(List<Owner> owners) {
+		this.owners = owners;
+	}
+
+	public void addOwner(Owner owner) {
+		owners.add(owner);
 	}
 
 }

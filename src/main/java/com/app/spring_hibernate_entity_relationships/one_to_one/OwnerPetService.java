@@ -11,17 +11,16 @@ public class OwnerPetService implements IService {
 	IPetRepository petRepo;
 
 	@Override
-	public Pet saveOrUpdatePet(Pet pet) {
-		return petRepo.save(pet);
-	}
-
-	@Override
-	public Owner saveOrUpdateOwner(Owner owner) {
-		return ownerRepo.save(owner);
-	}
-
-	@Override
 	public String hello() {
 		return "Hello!";
+	}
+
+	@Override
+	public void doStuff() {
+		Owner o = new Owner("o1");
+		Pet p = new Pet("p");
+		p.setOwner(o);
+		ownerRepo.save(o);
+		petRepo.save(p);
 	}
 }

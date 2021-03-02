@@ -18,12 +18,8 @@ public class Controller {
 		return service.hello();
 	}
 
-	@PostMapping("/add")
+	@PostMapping("/dostuff")
 	public void doStuff() {
-		Owner o = new Owner("o1");
-		Pet p = new Pet("p");
-		p.setOwner(o);
-		service.saveOrUpdateOwner(o);
-		service.saveOrUpdatePet(p);
+		service.doStuff();
 	}
 }

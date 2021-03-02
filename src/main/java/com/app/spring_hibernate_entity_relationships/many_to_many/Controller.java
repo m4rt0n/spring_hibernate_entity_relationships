@@ -1,4 +1,4 @@
-package com.app.spring_hibernate_entity_relationships.one_to_many;
+package com.app.spring_hibernate_entity_relationships.many_to_many;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
