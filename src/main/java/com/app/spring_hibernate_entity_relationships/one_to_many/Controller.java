@@ -1,4 +1,4 @@
-package com.app.spring_hibernate_entity_relationships.many_to_many;
+package com.app.spring_hibernate_entity_relationships.one_to_many;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +35,7 @@ public class Controller {
 		o1.setPets(pets);
 
 		service.saveOrUpdateOwner(o1);
+		pets.forEach(p -> p.setOwner(o1));
 		pets.forEach(p -> service.saveOrUpdatePet(p));
-		// service.saveOrUpdatePet(p1);
-		// service.saveOrUpdatePet(p2);
 	}
 }
